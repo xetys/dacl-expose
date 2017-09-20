@@ -2,18 +2,23 @@
 \contentsline {section}{\numberline {I}Context}{2}
 \contentsline {section}{\numberline {II}Example scenario}{3}
 \contentsline {section}{\numberline {III}Problems}{3}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Specification and precision}{3}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Blockchain design}{3}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Consensus finding}{3}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-D}}After-the-fact changes}{4}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-E}}Horizontal scalability of the microservices}{4}
-\contentsline {section}{\numberline {IV}Proposed solution approach}{4}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Trustlessness}{3}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}1}Network members and proposal handling}{3}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}2}Access policy enforcement}{3}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}3}After-the-fact mandate changes}{4}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}4}Policy storage}{4}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Decentralization}{4}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}1}Costs of operation}{4}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}2}Performance}{4}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}3}Policy storage}{4}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}4}Horizontal scalability of the microservices}{4}
+\contentsline {section}{\numberline {IV}Proposed solution approach}{5}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}the DACL protocols}{5}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}1}access decision protocol}{5}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}2}policy coordination protocol}{5}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}implementation and on-chain/off-chain design}{5}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}implementation and on-chain/off-chain design}{6}
 \contentsline {section}{\numberline {V}Evaluation}{6}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}comparing results with problems}{6}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}attack vectors}{6}
-\contentsline {section}{\numberline {VI}Timeline}{6}
-\contentsline {section}{References}{6}
+\contentsline {section}{\numberline {VI}Timeline}{7}
+\contentsline {section}{References}{7}
