@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.5.23)  21 SEP 2017 01:35
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.5.23)  27 SEP 2017 15:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -615,16 +615,6 @@ Package caption Info: End \AtBeginDocument code.
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 1565) in paragraph at lines 58--60
-\OT1/ptm/m/n/12 An en-try of the list con-tains the re-quest-ing
- []
-
-
-Underfull \hbox (badness 2042) in paragraph at lines 58--60
-\OT1/ptm/m/n/12 over-all se-cu-rity con-fig-u-ra-tion. So this ac-cess
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 58--60
 
  []
@@ -636,90 +626,83 @@ File: figures/access-control.png Graphic file (type png)
 Package pdftex.def Info: figures/access-control.png used on input line 62.
 (pdftex.def)             Requested size: 244.24199pt x 47.05615pt.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 <figures/platform.png, id=8, 1505.625pt x 1005.7575pt>
 File: figures/platform.png Graphic file (type png)
 
 <use figures/platform.png>
-Package pdftex.def Info: figures/platform.png used on input line 76.
+Package pdftex.def Info: figures/platform.png used on input line 78.
 (pdftex.def)             Requested size: 244.24199pt x 163.14973pt.
  [2
 
 
  <./figures/access-control.png (PNG copy)> <./figures/platform.png (PNG copy)>]
 
-Underfull \hbox (badness 10000) in paragraph at lines 91--92
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
 
  []
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 110.
+LaTeX Font Info:    Try loading font information for U+msa on input line 112.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 110.
+LaTeX Font Info:    Try loading font information for U+msb on input line 112.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 1552) in paragraph at lines 110--111
+Underfull \hbox (badness 1552) in paragraph at lines 112--114
 []\OT1/ptm/m/n/12 a mem-ber(anchor) shall be able to sign
  []
 
 
-Underfull \hbox (badness 3009) in paragraph at lines 115--116
+Underfull \hbox (badness 3009) in paragraph at lines 118--119
 []\OT1/ptm/m/n/12 the net-work shall be able (e.g., via a
  []
 
-
-Underfull \vbox (badness 4846) has occurred while \output is active []
-
- [3]
-<figures/DACL-basic.png, id=17, 1505.625pt x 1510.64375pt>
+[3] <figures/DACL-basic.png, id=18, 1505.625pt x 1510.64375pt>
 File: figures/DACL-basic.png Graphic file (type png)
 
 <use figures/DACL-basic.png>
-Package pdftex.def Info: figures/DACL-basic.png used on input line 156.
+Package pdftex.def Info: figures/DACL-basic.png used on input line 159.
 (pdftex.def)             Requested size: 244.24199pt x 245.05026pt.
  [4 <./figures/DACL-basic.png (PNG copy)>]
-Underfull \hbox (badness 1762) in paragraph at lines 171--186
+Underfull \hbox (badness 1762) in paragraph at lines 174--189
 \OML/cmm/m/it/9 permission \OT1/cmr/m/n/9 =$ \OT1/ptm/m/n/9 4 bits for cre-ate,
  read, up-date and delete
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 171--186
+Underfull \hbox (badness 10000) in paragraph at lines 174--189
 
  []
 
 
-Underfull \hbox (badness 2088) in paragraph at lines 171--186
+Underfull \hbox (badness 2088) in paragraph at lines 174--189
 \OT1/ptm/m/n/12 This in-fi-nite dis-crete set can be rep-re-sented
  []
 
-<figures/ACP-initial.png, id=21, 1505.625pt x 1559.8275pt>
+<figures/ACP-initial.png, id=22, 1505.625pt x 1559.8275pt>
 File: figures/ACP-initial.png Graphic file (type png)
 
 <use figures/ACP-initial.png>
-Package pdftex.def Info: figures/ACP-initial.png used on input line 213.
+Package pdftex.def Info: figures/ACP-initial.png used on input line 224.
 (pdftex.def)             Requested size: 78.15921pt x 80.97107pt.
 
-<figures/ACL-propose.png, id=22, 1505.625pt x 1559.8275pt>
+<figures/ACL-propose.png, id=23, 1505.625pt x 1559.8275pt>
 File: figures/ACL-propose.png Graphic file (type png)
 
 <use figures/ACL-propose.png>
-Package pdftex.def Info: figures/ACL-propose.png used on input line 214.
+Package pdftex.def Info: figures/ACL-propose.png used on input line 225.
 (pdftex.def)             Requested size: 78.15921pt x 80.97107pt.
 
-<figures/ACP-accept.png, id=23, 1505.625pt x 1564.84625pt>
+<figures/ACP-accept.png, id=24, 1505.625pt x 1564.84625pt>
 File: figures/ACP-accept.png Graphic file (type png)
 
 <use figures/ACP-accept.png>
-Package pdftex.def Info: figures/ACP-accept.png used on input line 215.
+Package pdftex.def Info: figures/ACP-accept.png used on input line 226.
 (pdftex.def)             Requested size: 78.15921pt x 81.23158pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--215
+Underfull \hbox (badness 10000) in paragraph at lines 226--226
 []\OT1/ptm/m/n/9 (c) |ac-cept-ing new
  []
 
@@ -727,34 +710,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 215--215
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 242--243
+Underfull \hbox (badness 10000) in paragraph at lines 255--256
 
  []
 
-<figures/eth-ipfs-design-without-client.png, id=24, 1505.625pt x 799.98875pt>
+<figures/eth-ipfs-design-without-client.png, id=25, 1505.625pt x 799.98875pt>
 File: figures/eth-ipfs-design-without-client.png Graphic file (type png)
 
 <use figures/eth-ipfs-design-without-client.png>
 Package pdftex.def Info: figures/eth-ipfs-design-without-client.png used on inp
-ut line 249.
+ut line 262.
 (pdftex.def)             Requested size: 244.24199pt x 129.7708pt.
 
-Underfull \hbox (badness 1527) in paragraph at lines 257--258
+Underfull \hbox (badness 1527) in paragraph at lines 270--271
 []\OT1/ptm/m/n/12 To keep as lit-tle as pos-si-ble data on the
  []
 
 [5 <./figures/ACP-initial.png (PNG copy)> <./figures/ACL-propose.png (PNG copy)
 > <./figures/ACP-accept.png (PNG copy)> <./figures/eth-ipfs-design-without-clie
 nt.png (PNG copy)>]
-<figures/eth-ipfs-design-with-client.png, id=36, 1505.625pt x 799.98875pt>
+<figures/eth-ipfs-design-with-client.png, id=37, 1505.625pt x 799.98875pt>
 File: figures/eth-ipfs-design-with-client.png Graphic file (type png)
 
 <use figures/eth-ipfs-design-with-client.png>
 Package pdftex.def Info: figures/eth-ipfs-design-with-client.png used on input 
-line 265.
+line 278.
 (pdftex.def)             Requested size: 244.24199pt x 129.7708pt.
 
-Underfull \hbox (badness 1796) in paragraph at lines 301--302
+Underfull \hbox (badness 2875) in paragraph at lines 305--307
+[]\OT1/ptm/m/n/12 The per-for-mance eval-u-a-tion an-a-lyzes, how
+ []
+
+[6 <./figures/eth-ipfs-design-with-client.png (PNG copy)>]
+Underfull \hbox (badness 1796) in paragraph at lines 323--324
 []\OT1/ptm/m/n/12 Evaluating the pro-to-type as a proof-of-
  []
 
@@ -770,17 +758,18 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[6 <./figures/eth-ipfs-design-with-client.png (PNG copy)>] (./dacl-expose.aux) 
-)
+[7
+
+] (./dacl-expose.aux) )
 (\end occurred when \iffalse on line 8 was incomplete) 
 Here is how much of TeX's memory you used:
- 5570 strings out of 493304
- 81550 string characters out of 6139871
- 163560 words of memory out of 5000000
- 8917 multiletter control sequences out of 15000+600000
- 38253 words of font info for 86 fonts, out of 8000000 for 9000
+ 5573 strings out of 493304
+ 81585 string characters out of 6139871
+ 166568 words of memory out of 5000000
+ 8918 multiletter control sequences out of 15000+600000
+ 40438 words of font info for 88 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,9n,47p,1261b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,9n,47p,1305b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf
 -dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
@@ -791,12 +780,13 @@ msfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/times/utmri8a.pfb>
-Output written on dacl-expose.pdf (6 pages, 1254050 bytes).
+mf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
+utmri8a.pfb>
+Output written on dacl-expose.pdf (7 pages, 1258702 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
+ 85 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
