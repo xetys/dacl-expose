@@ -33,7 +33,7 @@ David Steiman, 338864 \\
 \vspace{8cm}
 
 \begin{Huge}
-Design, Development, and Evaluation of a blockchain-based Decentralized Access Control Protocol for Microservices \\
+Design, Development, and Evaluation of a blockchain-based Decentralized Access Control Mechanism for Microservices \\
 %Building decentralized access control list for microservices on the Ethereum blockchain.
 \end{Huge}
 \begin{Large}
@@ -51,24 +51,25 @@ Version 5 \\
 % \tableofcontents
 
 \section{Context}
-In a microservice / federated architecture, there are different demands on security. The focus of today's microservice sources is mostly for the question: how to ensure that at request time all information needed for access decisions is available for processing. In details, the topics cover authentication (e.g., OpenID, IAM, SAML) to identify the requesting subject and authorization (e.g., OAuth 2, JWT) to gather all information about the authorization of the subject. The next question is about, how to make a decision. For this purpose, there are different approaches to access control enforcement, like role-based access control (RBAC) or attribute-based access control (ABAC). These concepts are simple, but lack on expressibility in complex access control requirements.  For fine-grained access control, a well-established way is using ``access control lists`` (ACL) for a detailed definition of policies, which often occur in monolithic applications. While tools like JWT make it unnecessary to store a state of a session, ACLs have to be persisted in a way accessible to all microservices. Moreover, someone has to manage the ACL configuration. In particular, in federated systems, where services belong to a certain party, every member has to trust this policy administrator.
+In a microservice / federated architecture, there are different demands on security. The focus of today's microservice sources is mostly for the question: how to ensure that at request time all information needed for access decisions is available for processing. In details, the topics cover authentication (e.g., OpenID, IAM, SAML) to identify the requesting subject and authorization (e.g., OAuth 2, JWT) to gather all information about the authorization of the subject. The next question is about, how to make a decision. For this purpose, there are different approaches to access control enforcement, like role-based access control (RBAC) or attribute-based access control (ABAC). These concepts are simple, but lack on expressibility in complex access control requirements.  For fine-grained access control, a well-established way is using ``access control lists`` (ACL) for a detailed definition of policies, which often occur in monolithic applications (and does not consider distributed usage). While tools like JWT make it unnecessary to store a state of a session, ACLs have to be persisted in a way accessible to all microservices. Moreover, someone has to manage the ACL configuration. In particular, in federated systems, where services belong to a certain party, every member has to trust this policy administrator.
 Consequently, the core idea of ACLs lacks in two points: decentralization and trust.
-
-
-The DACL concept relies on the model of domain-based distributed systems. In favor of this idea, domain is described as ``the realm of knowledge [..] of the software system being designed`` \cite{b2} which ``can be used to group
-objects in a hierarchical structure, to apply a common security policy [..] of large distributed systems.`` \cite{b1} Based on the concept of Yialelis, which is close to a system this thesis aims for, access control is designed with ACLs. An entry of the list contains the requesting subject, requested target and access rules defined for those. A reference monitor enforces policies. Although his idea has a focus on distributed systems, the concept assumes the presence of a policy administrator, which is performing the overall security configuration. So this access control mechanism requires trust in a central authority. \\
 
 \begin{figure}[!h]
   \includegraphics[width=\linewidth]{figures/access-control.png}
-  \caption{DACL for access control in microservices.}
+  \caption{security demands in microservices.}
   \label{fig:access-control}
 \end{figure}
 
-This thesis introduces a ``decentralized access control list`` (DACL) protocol. Assuming the presence of an identity management and authentication, DACL describes how to enforce authorization policies, being fully decentral and eliminating the need for a central authority (trustlessness). 
+There also exists an approach of using ACLs in distributed systems. This method uses the term ``domain`` what Yialels summarizes as ``grouping of objects in hierarchical structures for management of large systems`` \cite{b1} based on Slomans definition of domain as ``an object which maintains a list of references to objects that have been
+explicitly grouped together for the purposes of management`` 
+\cite{a2}. This definition is compatible with Evans definition of a domain as 
+``the realm of knowledge [..] of the software system being designed`` \cite{b2}, what is the definition of ``domain`` used in microservices.  Yialelis' concept, which is close to a system this thesis aims for,  is designed with ACLs. An entry of the list contains the requesting subject, its domain, the requested target, and access rules defined for those. A reference monitor enforces policies. Although his idea has a focus on distributed systems, the concept assumes the presence of a policy administrator, which is performing the overall security configuration. So this access control mechanism requires trust in a central authority. \\
 
-In favor of decentralization, DACL requires the underlying persistence be managed in a distributed manner, and that stored data cannot be changed later. For trustlessness, DACL supposes a smart contract is coordinating all state-changing operations.
+This thesis introduces a ``decentralized access control list`` (DACL) mechanism. Assuming the presence of an identity management and authentication, DACL describes how to enforce authorization policies, being fully decentral and eliminating the need for a central authority (trustlessness). 
 
-In favor of decentralized governance of microservices, the protocol itself does not cover technical details, to leave the implementation open to the service. The mechanism will be applied to an exemplary scenario to show, how these protocols should be used and implemented using Ethereum and IPFS.
+In favor of decentralization, DACL requires the underlying persistence be managed in a distributed manner, and that stored data cannot be changed later. For trustlessness, DACL supposes a smart contract, deployed on a blockchain, is coordinating all state-changing operations.
+
+In favor of decentralized governance of microservices, the mechanism itself does not consist of technical details, to leave the implementation open to the service. The mechanism will be applied to an exemplary scenario to show, how these mechanisms should be used and implemented using Ethereum and IPFS.
 
 
 \section{Example scenario}
@@ -80,7 +81,9 @@ In favor of decentralized governance of microservices, the protocol itself does 
   \label{fig:platform}
 \end{figure}
 
-The scenario describes a federated eHealth application platform for diagnoses and prescriptions. During treatment, a doctor declares several diagnoses and prescribes prescriptions for his patients. In this scenario, two parties are maintaining the eHealth platform, which consists of a diagnosis and a prescription platform. As medical data of a patient is highly sensitive, the access control policies are complex. On the one side, the patient should always be able to supervise the permission on his data, but allow exceptions for his doctor, e.g., to open access to diagnoses to collaborating doctors. On the other side, both doctors and pharmacists might become patients as well, so approaches like RBAC do not fit well. The green arrows in figure \ref{fig:platform} show the permission grant direction, while the black arrows show the common requests done by the different users. As data relating to a user should only be under the user's control, maintaining a central policy authority is not acceptable. Using centralized ACL mechanism also means, one node (or a centrally managed group of nodes) is responsible for storing the policies and allows this central authority to bypass the policies and manipulate the data.
+The scenario describes a federated eHealth application platform for diagnoses and prescriptions. During treatment, a doctor declares several diagnoses and prescribes prescriptions for his patients. In this scenario, two parties are maintaining the eHealth platform, which consists of a diagnosis and a prescription platform. As medical data of a patient is highly sensitive, the access control policies are complex. On the one side, the patient should always be able to supervise the permission on his data, but allow exceptions for his doctor, e.g., to open access to diagnoses to collaborating doctors. On the other side, both doctors and pharmacists might become patients as well, so approaches like RBAC do not fit well. 
+
+The green arrows in figure \ref{fig:platform} show the permission grant direction, while the black arrows show the common requests done by the different users. As data relating to a user should only be under the user's control, maintaining a central policy authority is not acceptable. Using centralized ACL mechanism also means, one node (or a centrally managed group of nodes) is responsible for storing the policies and allows this central authority to bypass the policies and manipulate the data.
 
 The thesis claims to show, how DACL helps to construct a decentralized access control mechanism, to ensure patients keep control over their data by implicitly changing the security policies of the eHealth platform.
 
@@ -94,15 +97,15 @@ The first core problem of DACL is trustlessness. Trustlessness means, no one has
 
 \subsubsection{Network members and proposal handling}
 
-The DACL smart contract allows a set of participants (e.g., Ethereum wallets) to be part of a network, where every member is permitted to interact with the smart contract. As there is no network administrator, the protocol must define how new members can join or how to remove malicious participants. 
+The DACL smart contract allows a set of participants (e.g., Ethereum wallets) to be part of a network, where every member is permitted to interact with the smart contract. As there is no network administrator, there should be mechanisms how new members can join or how to remove malicious participants. 
 
-As there is no central policy authority as well, which can perform changes on its behalf, the protocol must define a proposal handling for changes. The basic idea says every participant can read the policies, propose changes and vote on them. By default, all participants are forced to vote on any proposal. However, there are use-cases, where a participant is not required to participate in the voting process for some reason. The protocol must define the proper conditions when change proposals are accepted.
+As there is no central policy authority as well, which can perform changes on its behalf, the mechanism should consist of a policy change handling, where policies are committed after the network reached consensus. If the basic idea says, every participant can propose changes and vote on proposals; then there are subsequent problems of the voting system design. In a naive approach, all participants are forced to vote on every incoming proposal. However, there are use-cases, where a participant is not required to participate in the voting process for some reason. There should be proper conditions when change proposals are accepted.
 
 In the case when multiple policy change proposals are pending the network must end up in a state, where all valid policy change proposals are checked in.
 
 \subsubsection{Access policy enforcement}
 
-Comparing to the reference monitor from Yialelis' domain security model, the DACL protocol should define, how policies are enforced. Assuming technical requirements violates the microservice approach of decentralized governance the protocol should specify, how the policies are applied. Optionally it could be discussed, how other members can prove the policy enforcement.
+Comparing to the reference monitor from Yialelis' domain security model, DACL should define, how policies are enforced. Assuming technical requirements violates the microservice approach of decentralized governance the mechanism should specify, how the policies are applied. Optionally it could be discussed, how other members can prove the policy enforcement.
 
 \subsubsection{After-the-fact mandate changes}
 
@@ -131,19 +134,20 @@ Agnostic to the storage design, the owner of a node should not be able to change
 
 The second problem of DACL is about reducing the responsibility of a single participant and coordinating all tasks around communication and persistence completely in a distributed manner. In particular:
 
+\subsubsection{Policy storage}
+
+No node should form a single point of failure. As of Brewers CAP theorem, there is no way to guarantee consistency, availability, and partition at the same time. For availability, An access control decision must be possible at any time. There should be a tradeoff between consistency (ensure new policies are always available right after their commit), or partition (avoid storing a complete policy configuration state on every node).
+
 \subsubsection{Costs of operation}
 
 Putting data on the blockchain is expensive, so it must be clarified, which part of the data is ``on-chain`` and which ``off-chain``. In particular, how to refer to the off-chain-stored data. 
 
-Considering the core component of DACL is an Ethereum smart contract, every writing operation costs some fees in Ether (the Ethereum cryptocurrency) to be paid by a participant. Also, the complexity of the contracts final implementation is relevant for the running costs, as these depend on the number of instructions processed in Ethereum. When a participant runs out of gas, he becomes unable to communicate with the network, so the contract must regulate this costs with methods like auto-refilling and define how the network responds to frozen participants. For example, implementing a health check, where every participant writes the current timestamp on the blockchain can prevent this block on proposals, but increase the running costs.
+Considering the core component of DACL is an Ethereum smart contract, every writing operation costs some fees in Ether (the Ethereum cryptocurrency) to be paid by a participant. Also, the complexity of the contracts final implementation is relevant for the running costs, as these depend on the number of instructions processed in Ethereum. When a participant runs out of gas, he becomes unable to communicate with the network, so the contract must regulate this costs with methods like auto-refilling and define how the network responds to frozen participants. There are ways of inventing health checks, but these also increase the running costs. For example, forcing every participant to write the current timestamp on the blockchain can prevent freezes, but leads to more cost-intensive write operations.
 
 \subsubsection{Performance}
 
-The performance of DACL can be narrowed down to the response time for a request, which involves an access decision, and the duration for new proposals getting committed and propagated to all participants. The entire state can be stored in a single document, containing the full policy configuration. Consequently, a proposal consists of a whole state, too. Handling these policies unstructured may heavily affect the time a participant needs to iterate over the proposal. In a different approach a proposal consists only of a set of changes, so the current state is the result of all accepted changed applied after each other. Without caching, accumulating the changes may cause many requests, what affects the response time.
+The performance of DACL can be narrowed down to the response time for a request, which involves an access decision, and the duration for new proposals getting committed and propagated to all participants. The entire state can be stored in a single document, containing the full policy configuration. Consequently, a proposal consists of a whole state, too. Handling these policies unstructured may heavily affect the time a participant needs to iterate over the proposal. In a different approach, a proposal consists only of a set of changes, so the current state is the result of all accepted changes applied after each other. Without caching, accumulating the changes may cause many requests, what affects the response time.
 
-\subsubsection{Policy storage}
-
-No node should form a single point of failure. As of the CAP theorem, there is no way to guarantee consistency, availability, and partition. An access control decision must be possible at any time. There should be a tradeoff between consistency (ensure new policies are always available right after their commit), or partition (avoid storing a complete policy configuration state on every node).
 
 \subsubsection{Horizontal scalability of the microservices}
 
@@ -161,15 +165,16 @@ Microservices are often designed according to the twelve-factor app specificatio
   \label{fig:basic-dacl}
 \end{figure}
 
-The proposed distributed access control list protocol (DACL) claims to give a solution to the problems. At the core, all members of the DACL defined network interact with a single smart contract, which provides the actual state of the ACL and coordinates changes to this state. 
+The proposed distributed access control list mechanism (DACL) claims to give a solution to the problems. At the core, all members of the DACL defined network interact with a single smart contract, which provides the actual state of the ACL and coordinates changes to this state. 
 
-\newpage
+%\newpage
 
-\subsection{the DACL protocols}
+\subsection{DACL core parts}
 
-DACL is designed using the following sub-protocols:
+%DACL is designed using the following sub-mechanisms:
 
-\subsubsection{access decision protocol}
+\subsubsection{Access decision protocol}
+Building a system in a certain language, which enforces policies directly, would limit the usage of DACL to this language and its ecosystem. Instead, DACL defines an access decision protocol which describes, how a microservice should evaluate the policies, and assumes every microservice enforces them according to that protocol.
 
 The protocol first defines an access control entity $ ace \in \mathbb{ACL} $, which is in an access control list $ \mathbb{ACL} $, defined by:
 \begin{footnotesize}
@@ -213,9 +218,11 @@ Every microservice acts as a participant for a domain (by owning a private key k
 To evaluate this ACL for a given object and subject, a participant iterates over all access control entries for its matching domain in the defined order. The first match is providing the decision if access is granted. A participant is free to use any convention for identifying a single subject, a group of users or a role. 
 
 
-\subsubsection{policy coordination protocol}
+\subsubsection{Coordination mechanisms}
 
-The policy coordination protocol describes how exactly parties can change the ACL. Given the fact, all communication is done via the DACL smart contract, figure \ref{fig:proposal-handling} describes how a successful reconciliation should proceed. 
+Both, for member and policy administration DACL defines a coordination mechanism, which consists of proposals and voting procedures. 
+
+By example, the policy coordination mechanism describes how exactly parties can change the ACL. Given the fact, all communication is done via the DACL smart contract, figure \ref{fig:proposal-handling} describes how a successful reconciliation should proceed. 
 
 \begin{figure}[!h]
 \centering
@@ -250,12 +257,13 @@ The policy coordination protocol describes how exactly parties can change the AC
 %\endminipage\hfill
 %\end{figure}
 
-When a participant wants to change policy rules, he defines a new version of the ACL and reports a proposal to the network. Each participant can either accept the new version, deny with a user-defined reason or abstain from answering. If no of the participants denies the proposal, the smart contract provides the new ACL list. 
 
-As an alternative, participants could send deltas instead of full versions of the ACL.\\
+Every microservice can read the ACL by interacting with the smart contract. DACL assumes the microservice to implement the access decision protocol. However, interpreting non-owning domain object policies is optional. When a participant wants to change policy rules, he defines a new version of the ACL and reports a proposal to the network. Each participant can either accept the new version, deny with a user-defined reason or abstain from answering. If no of the participants denies the proposal, the smart contract provides the new ACL list. 
+
+A similar coordination mechanism will be designed for network member joining/kicking, handling voting conditions, and mandate changes.
 
 
-\subsection{implementation and on-chain/off-chain design}
+\subsection{Implementation and on-chain/off-chain design}
 
 \begin{figure}[!h]
   \centering
@@ -265,13 +273,12 @@ As an alternative, participants could send deltas instead of full versions of th
   \centering
 \end{figure}
 
-After defining that protocol formally, a reference prototype must be implemented using a common language for building microservices. The example will be implemented using NodeJS and Solidity (for developing smart contracts). 
+After defining how that mechanism should work in theory, a reference prototype must be implemented using a common language for building microservices. The example will be implemented using NodeJS and Solidity (for developing smart contracts). 
 
-To keep as little as possible data on the blockchain, the smart contract will store IPFS addresses of objects. In the most basic scenario, every microservice implements the policy coordination protocol directly when interacting with IPFS and Ethereum. 
+The smart contract will store IPFS addresses of objects, to keep as little as possible data on the blockchain. In the most basic scenario, every microservice handles coordination directly by interacting with IPFS and Ethereum. 
 
-To standardize the coordination, a DACL client can be developed that runs parallel to each microservice and makes the protocol processes available via a well-defined API. It interacts with the smart contract, reads the address from the blockchain and opens the content using an IPFS client.
+To standardize the coordination, a DACL client can be developed that runs parallel to each microservice and makes the DACL processes available via a well-defined API. It interacts with the smart contract, reads the address from the blockchain and opens the content using an IPFS client.
 
-\newpage
 
 \begin{figure}[!hb]
   \centering
@@ -281,15 +288,13 @@ To standardize the coordination, a DACL client can be developed that runs parall
   \centering
 \end{figure}
 
-
-%
-%Each microservice reads and writes a common policy configuration file, which is stored in IPFS and hashed in the Ethereum blockchain. During read, a service must implement own security policies for itself. Interpreting non-owning domain object is optional. For writes (and changes) of that configuration, a service is only able to make a proposal. By using a simple voting system, every service may vote on incoming proposals. Depending on the choice, how consensus is reached, the smart contract finally evaluates pending proposals and in the case of satisfying all conditions, adds the new configuration to the network.
+%A service reads the ACL must implement the access decision protocol for itself. For writes (and changes) of that configuration, a service is only able to make a proposal. By using a simple voting system, every service may vote on incoming proposals. Depending on the conditions, how consensus is reached, the smart contract finally evaluates pending proposals and in the case of satisfying all conditions, adds the new configuration to the network.
 
 
 
 \section{Evaluation}
 
-After designing the protocol and implementing a prototype, it is possible to analyze the result regarding trustlessness and decentralization.
+After designing the mechanism and implementing a prototype, it is possible to analyze the result regarding trustlessness and decentralization.
 
 \subsection{Security evaluation}
 
@@ -317,34 +322,35 @@ In a similar scenario, the next tests will analyze the performance of handling n
 \section{Timeline}
 
 \begin{list}{-}{ }
-\item formally design the DACL protocol
+\item formally design the DACL mechanism
 \item (possibly) starting implementation of DACL client
-\item Building a prototype of a microservice based application, implementing the protocol and using the DACL policies
+\item Building a prototype of a microservice based application, implementing the mechanism and using the DACL policies
 \item Evaluating the prototype as a proof-of-concept, referring to defined claims and new problems, found during the modeling and/or implementation process
 \end{list}
 
 
-\section*{Related Work}
 
+%
+%\begin{list}{-}{}
+%% \item Decentralized Access Control in Distributed File Systems (MILTCHEV and SMITH)
+%%\item Trust Mechanism in Distributed Access Control Model of P2P Networks (Wang, Zhu, Jin, Luo)
+%\item after-the-fact mandate changes (Hyperledger requirement WG)
+%\item domain-based security in distributed systems (Yialelis)
+%\item ethereum whitepaper (Buterin)
+%% \item Hawk - Blockchain Model of Cryptography \& Smart Contracts (Kosba, Miller, Elaine Shi, Wen, Papamanthou)
+%% \item Consensus and Cooperation in networked multi-agent systems (Olfati-Saber, Fax, Murray)
+%\item 
+%\end{list}
 
-
-\begin{list}{-}{}
-% \item Decentralized Access Control in Distributed File Systems (MILTCHEV and SMITH)
-%\item Trust Mechanism in Distributed Access Control Model of P2P Networks (Wang, Zhu, Jin, Luo)
-\item after-the-fact mandate changes (Hyperledger requirement WG)
-\item domain-based security in distributed systems (Yialelis)
-\item ethereum whitepaper (Buterin)
-% \item Hawk - Blockchain Model of Cryptography \& Smart Contracts (Kosba, Miller, Elaine Shi, Wen, Papamanthou)
-% \item Consensus and Cooperation in networked multi-agent systems (Olfati-Saber, Fax, Murray)
-\item 
-\end{list}
-
-More papers and references are pending. 
 
 \bibliographystyle{IEEEtran}
 \bibliography{refs}
 %\printbibliograpy
 
 
+More papers and references are pending. 
+\newpage
+\onecolumn
+\tableofcontents
 
 \end{document}

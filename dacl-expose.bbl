@@ -21,19 +21,22 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{b1}
+N.~Yialelis, \emph{Domain-Based Security forDistributed Object Systems}, 1996.
+
+\bibitem{a2}
+M.~Sloman, ``Journal of network and systems management.''
+
 \bibitem{b2}
 E.~Evans, \emph{Domain Driven Design}, 2002.
 
-\bibitem{b1}
-N.~Yialelis, \emph{Domain-Based Security forDistributed Object Systems}, 1996.
+\bibitem{a1}
+M.~O. van Deventer and R.~Joosten, ``Hyperledge - after-the-fact mandate
+  changes.''
 
 \bibitem{site1}
 \BIBentryALTinterwordspacing
 The twelve-factor app. [Online]. Available: \url{https://12factor.net/}
 \BIBentrySTDinterwordspacing
-
-\bibitem{a1}
-M.~O. van Deventer and R.~Joosten, ``Hyperledge - after-the-fact mandate
-  changes.''
 
 \end{thebibliography}
